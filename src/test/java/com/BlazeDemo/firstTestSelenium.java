@@ -18,6 +18,6 @@ public class firstTestSelenium {
         driver.get("http://blazedemo.com");
         WebElement FindFlights = driver.findElement(By.cssSelector("input"));
         FindFlights.click();
-        driver.quit();
+        //driver.quit();
     }
 }
