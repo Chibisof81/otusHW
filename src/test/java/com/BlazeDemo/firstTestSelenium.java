@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class firstTestSelenium {
 
@@ -18,6 +20,8 @@ public class firstTestSelenium {
         driver.get("http://blazedemo.com");
         WebElement FindFlights = driver.findElement(By.cssSelector("input"));
         FindFlights.click();
-        //driver.quit();
+        WebElement VirginAmerica = driver.findElement(By.cssSelector("tbody tr:nth-of-type(1) td:nth-child(4)"));
+        assertTrue(VirginAmerica.isDisplayed());
+        driver.quit();
     }
 }
