@@ -1,13 +1,14 @@
 package com.BlazeDemo;
 
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class firstTestSelenium {
@@ -22,6 +23,7 @@ public class firstTestSelenium {
         FindFlights.click();
         WebElement VirginAmerica = driver.findElement(By.cssSelector("tbody tr:nth-of-type(1) td:nth-child(4)"));
         assertTrue(VirginAmerica.isDisplayed());
+        assertEquals("ok", "http://blazedemo.com/reserve.php", "http://blazedemo.com/reserve.php");
         driver.quit();
     }
 }
