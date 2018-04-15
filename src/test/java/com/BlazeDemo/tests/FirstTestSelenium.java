@@ -25,8 +25,7 @@ public class FirstTestSelenium {
     }
 
     @Test
-    public void Test() {
-
+    public void test() {
         driver.get("http://blazedemo.com");
         WebElement FindFlights = driver.findElement(By.cssSelector("input"));
         FindFlights.click();
