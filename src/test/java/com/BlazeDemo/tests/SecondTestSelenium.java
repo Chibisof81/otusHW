@@ -37,21 +37,37 @@ public class SecondTestSelenium {
 
         WebElement flight = driver.findElement(By.xpath("/html/body//table[@class='table']//td[.='9696']"));
         String flightStr = flight.getText();
-
         WebElement airline = driver.findElement(By.xpath("/html/body//table[@class='table']//td[.='Aer Lingus']"));
         String airlineStr = airline.getText();
+        WebElement price = driver.findElement(By.xpath("/html/body//table[@class='table']//td[.='$200.98']"));
+        String priceStr = price.getText().substring(1);
 
         driver.findElement(By.cssSelector("tbody tr:nth-of-type(3) [type=\"submit\"]")).click();
 
         WebElement flightNumber = driver.findElement(By.xpath("/html//p[.='Flight Number: 9696']"));
         String flightString = flightNumber.getText().substring(15);
-
-
         WebElement airline2 = driver.findElement(By.xpath("/html//p[.='Airline: Aer Lingus']"));
         String airlineString = airline2.getText().substring(9);
+        WebElement price2 = driver.findElement(By.xpath("/html//p[.='Price: 200.98']"));
+        String priceString = price2.getText().substring(7);
 
         Assert.assertEquals(airlineStr,airlineString);
         Assert.assertEquals(flightStr,flightString);
+        Assert.assertEquals(priceStr,priceString);
+
+        WebElement taxes = driver.findElement(By.xpath("/html//p[.='Arbitrary Fees and Taxes: 514.76']"));
+        String taxesStr = taxes.getText().substring(26);
+
+        WebElement totalcost = driver.findElement(By.xpath("/html/body//em[.='715.74 ']"));
+        String costStr = totalcost.getText().substring(0,6);
+
+        float costInt = Float.parseFloat(costStr);
+        float taxesInt = Float.parseFloat(taxesStr);
+        float priceInt = Float.parseFloat(priceString);
+        float a = Math.abs(taxesInt + priceInt);
+
+        Assert.assertEquals(a,costInt);
+
     }
 
 
