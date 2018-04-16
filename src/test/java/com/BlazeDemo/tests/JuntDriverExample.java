@@ -2,11 +2,11 @@ package com.BlazeDemo.tests;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class JuntDriverExample {
@@ -18,12 +18,12 @@ public class JuntDriverExample {
         WebDriverManager.chromedriver().setup();
     }
 
-    @BeforeMethod
+    @Before
     public void setupTest() {
         driver = new ChromeDriver();
     }
 
-    @AfterMethod
+    @After
     public void teardown() {
         if (driver != null) {
             driver.quit();
@@ -32,7 +32,7 @@ public class JuntDriverExample {
 
     @Test
     public void test() {
-         driver.get("http://blazedemo.com");
         // Your test code here
-    }
+        }
+
 }
