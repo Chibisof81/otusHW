@@ -5,35 +5,55 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class SecondTestSelenium {
 
     private WebDriver driver;
+    private WebDriverWait WebDriverWait;
 
     @BeforeClass
     public static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
+
     @BeforeMethod
     public void setupTest() {
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
+        WebDriverWait = new WebDriverWait(driver,3);
     }
 
     @Test
     public void testHomePage() {
         driver.get("http://blazedemo.com");
-        driver.findElement(By.cssSelector("[value=\"Boston\"]")).click();
-        driver.findElement(By.cssSelector("[value=\"Berlin\"]")).click();
+
+        WebElement select1 = driver.findElement(By.cssSelector("[name=\"fromPort\"]"));
+        Select selectWin1 = new Select(select1);
+        selectWin1.selectByValue("Boston");
+
+        WebElement select2 = driver.findElement(By.cssSelector("[name=\"toPort\"]"));
+        Select selectWin2 = new Select(select2);
+        selectWin2.selectByValue("Berlin");
+
+//        driver.findElement(By.cssSelector("[value=\"Boston\"]")).click();
+//        driver.findElement(By.cssSelector("[value=\"Berlin\"]")).click();
+
         driver.findElement(By.cssSelector("input")).click();
+
         WebElement header = driver.findElement(By.cssSelector("h3"));
+        String headerStr = header.getText();
         Assert.assertTrue(header.isDisplayed());
-        Assert.assertEquals("Flights from Boston to Berlin:", header.getText());
+        Assert.assertEquals("Flights from Boston to Berlin:", headerStr);
 
         WebElement flight = driver.findElement(By.xpath("/html/body//table[@class='table']//td[.='9696']"));
         String flightStr = flight.getText();
@@ -67,6 +87,8 @@ public class SecondTestSelenium {
         float a = Math.abs(taxesInt + priceInt);
 
         Assert.assertEquals(a,costInt);
+
+        driver.findElement(By.cssSelector("#inputName")).sendKeys("Вася Петрович");
 
     }
 
