@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.SendKeysAction;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -88,17 +89,37 @@ public class SecondTestSelenium {
 
         Assert.assertEquals(a,costInt);
 
-        driver.findElement(By.cssSelector("#inputName")).sendKeys("Вася Петрович");
+        driver.findElement(By.id("inputName")).sendKeys("Вася Петрович");
+        driver.findElement(By.id("address")).sendKeys("улица, дом, квартира");
+        driver.findElement(By.id("city")).sendKeys("Moscow");
+        driver.findElement(By.id("state")).sendKeys("Alabama");
+        driver.findElement(By.id("zipCode")).sendKeys("123456");
+        WebElement select3 = driver.findElement(By.id("cardType"));
+        Select selectWin3 = new Select(select3);
+        selectWin3.selectByValue("dinersclub");
+        driver.findElement(By.id("creditCardNumber")).sendKeys("987654321");
+        WebElement creditCardMonth = driver.findElement(By.id("creditCardMonth"));
+        creditCardMonth.clear();
+        creditCardMonth.sendKeys("8");
+        WebElement creditCardYear = driver.findElement(By.id("creditCardYear"));
+        creditCardYear.clear();
+        creditCardYear.sendKeys("2018");
+        driver.findElement(By.id("nameOnCard")).sendKeys("Vasia Petrovich");
+        driver.findElement(By.id("rememberMe")).click();
+        driver.findElement(By.cssSelector(".btn-primary")).click();
+
+
+
 
     }
 
 
-    @AfterMethod
-    public void teardown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//    @AfterMethod
+//    public void teardown() {
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 }
 
 
