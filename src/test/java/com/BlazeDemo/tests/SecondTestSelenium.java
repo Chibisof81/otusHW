@@ -1,38 +1,14 @@
 package com.BlazeDemo.tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.BlazeDemo.AbstractTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.SendKeysAction;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+public class SecondTestSelenium extends AbstractTest {
 
-public class SecondTestSelenium {
-
-    private WebDriver driver;
-    private WebDriverWait WebDriverWait;
-
-    @BeforeClass
-    public static void setupClass() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-
-    @BeforeMethod
-    public void setupTest() {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
-        WebDriverWait = new WebDriverWait(driver,3);
-    }
 
     @Test
     public void testHomePage() {
@@ -107,19 +83,13 @@ public class SecondTestSelenium {
         driver.findElement(By.id("nameOnCard")).sendKeys("Vasia Petrovich");
         driver.findElement(By.id("rememberMe")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
+        String confirmation  = driver.getCurrentUrl();
 
-
-
+        Assert.assertEquals(confirmation,"http://blazedemo.com/confirmation.php");
 
     }
 
 
-//    @AfterMethod
-//    public void teardown() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
 }
 
 
