@@ -65,22 +65,32 @@ public class SecondTestSelenium extends AbstractTest {
 
         Assert.assertEquals(a,costInt);
 
-        driver.findElement(By.id("inputName")).sendKeys("Вася Петрович");
-        driver.findElement(By.id("address")).sendKeys("улица, дом, квартира");
-        driver.findElement(By.id("city")).sendKeys("Moscow");
-        driver.findElement(By.id("state")).sendKeys("Alabama");
-        driver.findElement(By.id("zipCode")).sendKeys("123456");
+        WebElement inputName = driver.findElement(By.id("inputName"));
+        WebElement address =driver.findElement(By.id("address"));
+        WebElement city = driver.findElement(By.id("city"));
+        WebElement state = driver.findElement(By.id("state"));
+        WebElement zipCode =  driver.findElement(By.id("zipCode"));
         WebElement select3 = driver.findElement(By.id("cardType"));
         Select selectWin3 = new Select(select3);
-        selectWin3.selectByValue("dinersclub");
-        driver.findElement(By.id("creditCardNumber")).sendKeys("987654321");
+        WebElement cardNumber = driver.findElement(By.id("creditCardNumber"));
         WebElement creditCardMonth = driver.findElement(By.id("creditCardMonth"));
         creditCardMonth.clear();
-        creditCardMonth.sendKeys("8");
         WebElement creditCardYear = driver.findElement(By.id("creditCardYear"));
         creditCardYear.clear();
+        WebElement cardHolder = driver.findElement(By.id("nameOnCard"));
+
+        inputName.sendKeys("Вася Петрович");
+        address.sendKeys("улица, дом, квартира");
+        city.sendKeys("Moscow");
+        state.sendKeys("Idaho");
+        zipCode.sendKeys("123456");
+        selectWin3.selectByValue("dinersclub");
+        cardNumber.sendKeys("987654321");
+        creditCardMonth.sendKeys("8");
         creditCardYear.sendKeys("2018");
-        driver.findElement(By.id("nameOnCard")).sendKeys("Vasia Petrovich");
+        cardHolder.sendKeys("Vasia Petrovich");
+
+
         driver.findElement(By.id("rememberMe")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
         String confirmation  = driver.getCurrentUrl();
