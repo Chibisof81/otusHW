@@ -9,21 +9,25 @@ import org.testng.annotations.Test;
 
 public class SecondTestSelenium extends AbstractTest {
 
+    private String from = "Boston";
+    private String to = "Berlin";
+    private String inputName = "Вася Петрович";
+    private String address = "улица, дом, квартира";
+    private String city = "Moscow";
+    private String state = "Idaho";
+    private String zipCode = "123456";
+    private String cardType = "dinersclub";
+    private String cardNumber = "987654321";
+    private String cardMonth = "8";
+    private String cardYear = "2018";
+    private String cardHolder = "Vasia Petrovich";
 
     @Test
     public void testHomePage() {
         driver.get("http://blazedemo.com");
 
-        WebElement select1 = driver.findElement(By.cssSelector("[name=\"fromPort\"]"));
-        Select selectWin1 = new Select(select1);
-        selectWin1.selectByValue("Boston");
-
-        WebElement select2 = driver.findElement(By.cssSelector("[name=\"toPort\"]"));
-        Select selectWin2 = new Select(select2);
-        selectWin2.selectByValue("Berlin");
-
-//        driver.findElement(By.cssSelector("[value=\"Boston\"]")).click();
-//        driver.findElement(By.cssSelector("[value=\"Berlin\"]")).click();
+        new Select(driver.findElement(By.cssSelector("[name=\"fromPort\"]"))).selectByValue(from);
+        new Select(driver.findElement(By.cssSelector("[name=\"toPort\"]"))).selectByValue(to);
 
         driver.findElement(By.cssSelector("input")).click();
 
@@ -48,58 +52,45 @@ public class SecondTestSelenium extends AbstractTest {
         WebElement price2 = driver.findElement(By.xpath("/html//p[.='Price: 200.98']"));
         String priceString = price2.getText().substring(7);
 
-        Assert.assertEquals(airlineStr,airlineString);
-        Assert.assertEquals(flightStr,flightString);
-        Assert.assertEquals(priceStr,priceString);
+        Assert.assertEquals(airlineStr, airlineString);
+        Assert.assertEquals(flightStr, flightString);
+        Assert.assertEquals(priceStr, priceString);
 
         WebElement taxes = driver.findElement(By.xpath("/html//p[.='Arbitrary Fees and Taxes: 514.76']"));
         String taxesStr = taxes.getText().substring(26);
 
         WebElement totalcost = driver.findElement(By.xpath("/html/body//em[.='715.74 ']"));
-        String costStr = totalcost.getText().substring(0,6);
+        String costStr = totalcost.getText().substring(0, 6);
 
         float costInt = Float.parseFloat(costStr);
         float taxesInt = Float.parseFloat(taxesStr);
         float priceInt = Float.parseFloat(priceString);
         float a = Math.abs(taxesInt + priceInt);
 
-        Assert.assertEquals(a,costInt);
+        Assert.assertEquals(a, costInt);
 
-        WebElement inputName = driver.findElement(By.id("inputName"));
-        WebElement address =driver.findElement(By.id("address"));
-        WebElement city = driver.findElement(By.id("city"));
-        WebElement state = driver.findElement(By.id("state"));
-        WebElement zipCode =  driver.findElement(By.id("zipCode"));
-        WebElement select3 = driver.findElement(By.id("cardType"));
-        Select selectWin3 = new Select(select3);
-        WebElement cardNumber = driver.findElement(By.id("creditCardNumber"));
+        driver.findElement(By.id("inputName")).sendKeys(inputName);
+        driver.findElement(By.id("address")).sendKeys(address);
+        driver.findElement(By.id("city")).sendKeys(city);
+        driver.findElement(By.id("state")).sendKeys(state);
+        driver.findElement(By.id("zipCode")).sendKeys(zipCode);
+        new Select(driver.findElement(By.id("cardType"))).selectByValue(cardType);
+        driver.findElement(By.id("creditCardNumber")).sendKeys(cardNumber);
         WebElement creditCardMonth = driver.findElement(By.id("creditCardMonth"));
         creditCardMonth.clear();
+        creditCardMonth.sendKeys(cardMonth);
         WebElement creditCardYear = driver.findElement(By.id("creditCardYear"));
         creditCardYear.clear();
-        WebElement cardHolder = driver.findElement(By.id("nameOnCard"));
-
-        inputName.sendKeys("Вася Петрович");
-        address.sendKeys("улица, дом, квартира");
-        city.sendKeys("Moscow");
-        state.sendKeys("Idaho");
-        zipCode.sendKeys("123456");
-        selectWin3.selectByValue("dinersclub");
-        cardNumber.sendKeys("987654321");
-        creditCardMonth.sendKeys("8");
-        creditCardYear.sendKeys("2018");
-        cardHolder.sendKeys("Vasia Petrovich");
-
+        creditCardYear.sendKeys(cardYear);
+        driver.findElement(By.id("nameOnCard")).sendKeys(cardHolder);
 
         driver.findElement(By.id("rememberMe")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
-        String confirmation  = driver.getCurrentUrl();
+        String confirmation = driver.getCurrentUrl();
 
-        Assert.assertEquals(confirmation,"http://blazedemo.com/confirmation.php");
+        Assert.assertEquals(confirmation, "http://blazedemo.com/confirmation.php");
 
     }
-
-
 }
 
 
