@@ -89,8 +89,5 @@ public class SecondTestSelenium extends AbstractTest {
         String confirmation = driver.getCurrentUrl();
 
         Assert.assertEquals(confirmation, "http://blazedemo.com/confirmation.php");
-
     }
 }
-
-
