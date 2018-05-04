@@ -6,25 +6,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import static com.BlazeDemo.domain.UserData.*;
 
 public class SecondTestSelenium extends AbstractTest {
 
     private String from = "Boston";
     private String to = "Berlin";
-    private String inputName = "Вася Петрович";
-    private String address = "улица, дом, квартира";
-    private String city = "Moscow";
-    private String state = "Idaho";
-    private String zipCode = "123456";
-    private String cardType = "dinersclub";
-    private String cardNumber = "987654321";
-    private String cardMonth = "8";
-    private String cardYear = "2018";
-    private String cardHolder = "Vasia Petrovich";
 
     @Test
     public void testHomePage() {
         driver.get("http://blazedemo.com");
+
 
         new Select(driver.findElement(By.cssSelector("[name=\"fromPort\"]"))).selectByValue(from);
         new Select(driver.findElement(By.cssSelector("[name=\"toPort\"]"))).selectByValue(to);
@@ -69,20 +61,20 @@ public class SecondTestSelenium extends AbstractTest {
 
         Assert.assertEquals(a, costInt);
 
-        driver.findElement(By.id("inputName")).sendKeys(inputName);
-        driver.findElement(By.id("address")).sendKeys(address);
-        driver.findElement(By.id("city")).sendKeys(city);
-        driver.findElement(By.id("state")).sendKeys(state);
-        driver.findElement(By.id("zipCode")).sendKeys(zipCode);
-        new Select(driver.findElement(By.id("cardType"))).selectByValue(cardType);
-        driver.findElement(By.id("creditCardNumber")).sendKeys(cardNumber);
+        driver.findElement(By.id("inputName")).sendKeys(USER_1.getInputName());
+        driver.findElement(By.id("address")).sendKeys(USER_1.getAddress());
+        driver.findElement(By.id("city")).sendKeys(USER_1.getCity());
+        driver.findElement(By.id("state")).sendKeys(USER_1.getState());
+        driver.findElement(By.id("zipCode")).sendKeys(USER_1.getZipCode());
+        new Select(driver.findElement(By.id("cardType"))).selectByValue(USER_1.getCardType());
+        driver.findElement(By.id("creditCardNumber")).sendKeys(USER_1.getCardNumber());
         WebElement creditCardMonth = driver.findElement(By.id("creditCardMonth"));
         creditCardMonth.clear();
-        creditCardMonth.sendKeys(cardMonth);
+        creditCardMonth.sendKeys(USER_1.getCardMonth());
         WebElement creditCardYear = driver.findElement(By.id("creditCardYear"));
         creditCardYear.clear();
-        creditCardYear.sendKeys(cardYear);
-        driver.findElement(By.id("nameOnCard")).sendKeys(cardHolder);
+        creditCardYear.sendKeys(USER_1.getCardYear());
+        driver.findElement(By.id("nameOnCard")).sendKeys(USER_1.getCardHolder());
 
         driver.findElement(By.id("rememberMe")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
