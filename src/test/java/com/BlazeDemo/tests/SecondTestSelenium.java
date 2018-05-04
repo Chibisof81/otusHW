@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import static com.BlazeDemo.domain.UserData.*;
+import static domain.UserData.*;
 
 public class SecondTestSelenium extends AbstractTest {
 

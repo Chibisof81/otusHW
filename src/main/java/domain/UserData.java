@@ -1,4 +1,4 @@
-package com.BlazeDemo.domain;
+package domain;
 
 import lombok.Data;
 
