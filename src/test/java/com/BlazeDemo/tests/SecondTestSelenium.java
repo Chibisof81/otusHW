@@ -6,20 +6,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import page.HomePage;
 import static domain.UserData.*;
 
 public class SecondTestSelenium extends AbstractTest {
 
-    private String from = "Boston";
-    private String to = "Berlin";
+    //public static HomePage homePage;
 
     @Test
     public void testHomePage() {
+        HomePage hp = new HomePage(driver);
         driver.get("http://blazedemo.com");
 
+        new Select(HomePage.from).selectByValue(USER_1.getFrom());
+        new Select(HomePage.to).selectByValue(USER_1.getTo());
 
-        new Select(driver.findElement(By.cssSelector("[name=\"fromPort\"]"))).selectByValue(from);
-        new Select(driver.findElement(By.cssSelector("[name=\"toPort\"]"))).selectByValue(to);
+        //homePage.buttonClick();
 
         driver.findElement(By.cssSelector("input")).click();
 
@@ -35,7 +37,7 @@ public class SecondTestSelenium extends AbstractTest {
         WebElement price = driver.findElement(By.xpath("/html/body//table[@class='table']//td[.='$200.98']"));
         String priceStr = price.getText().substring(1);
 
-        driver.findElement(By.cssSelector("tbody tr:nth-of-type(3) [type=\"submit\"]")).click();
+        driver.findElement(By.xpath("/html/body//table[@class='table']/tbody/tr[3]/td[1]/input[@value='Choose This Flight']")).click();
 
         WebElement flightNumber = driver.findElement(By.xpath("/html//p[.='Flight Number: 9696']"));
         String flightString = flightNumber.getText().substring(15);

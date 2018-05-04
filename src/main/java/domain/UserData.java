@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class UserData {
     public static final UserData USER_1 = new UserData(
+            "Boston",
+            "Berlin",
             "Вася Петрович",
             "улица, дом, квартира",
             "Moscow",
@@ -16,6 +18,8 @@ public class UserData {
             "2018",
             "Vasia Petrovich");
 
+    private final String from;
+    private final String to;
     private final String inputName;
     private final String address;
     private final String city;
