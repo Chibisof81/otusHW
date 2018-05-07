@@ -18,8 +18,11 @@ public class SecondTestSelenium extends AbstractTest {
         HomePage hp = new HomePage(driver);
         driver.get("http://blazedemo.com");
 
-        new Select(HomePage.from).selectByValue(USER_1.getFrom());
-        new Select(HomePage.to).selectByValue(USER_1.getTo());
+        HomePage.select_list1(USER_1.getFrom());
+        HomePage.select_list2(USER_1.getTo());
+
+       // new Select(HomePage.from).selectByValue(USER_1.getFrom());
+        //new Select(HomePage.to).selectByValue(USER_1.getTo());
 
         //homePage.buttonClick();
 
