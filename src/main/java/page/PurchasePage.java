@@ -6,38 +6,83 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import static domain.UserData.*;
+import static domain.UserData.USER_1;
 
 public class PurchasePage {
     private WebDriver driver;
 
     @FindBy(id = "inputName")
     private static WebElement inputName;
-    public static void FirstName() {inputName.sendKeys(USER_1.getInputName());}
+
+    public static void FirstName() {
+        inputName.sendKeys(USER_1.getInputName());
+    }
 
     @FindBy(id = "address")
     private static WebElement inputAdress;
-    public static void Adress(){inputAdress.sendKeys(USER_1.getAddress());}
 
-    @FindBy (id = "city")
+    public static void Adress() {
+        inputAdress.sendKeys(USER_1.getAddress());
+    }
+
+    @FindBy(id = "city")
     private static WebElement inputSity;
-    public static void Sity(){inputSity.sendKeys(USER_1.getCity());}
+
+    public static void Sity() {
+        inputSity.sendKeys(USER_1.getCity());
+    }
 
     @FindBy(id = "state")
     private static WebElement inputState;
-    public static void State(){inputState.sendKeys(USER_1.getState());}
+
+    public static void State() {
+        inputState.sendKeys(USER_1.getState());
+    }
 
     @FindBy(id = "zipCode")
     private static WebElement inputZip;
-    public static void ZipCode(){inputZip.sendKeys(USER_1.getZipCode());}
+
+    public static void ZipCode() {
+        inputZip.sendKeys(USER_1.getZipCode());
+    }
 
     @FindBy(id = "cardType")
     private static WebElement setCardType;
-    public static void CardType(String cardType){
-        Select statusDropdown=new Select(setCardType);
-        statusDropdown.selectByValue(cardType);}
 
+    public static void CardType(String cardType) {
+        Select statusDropdown = new Select(setCardType);
+        statusDropdown.selectByValue(cardType);
+    }
 
+    @FindBy(id = "creditCardNumber")
+    private static WebElement creditCardNumber;
+
+    public static void CardNumber() {
+        creditCardNumber.sendKeys(USER_1.getCardNumber());
+    }
+
+    @FindBy(id = "creditCardMonth")
+    private static WebElement cardMonth;
+
+    public static void CardMonth() {
+        cardMonth.clear();
+        cardMonth.sendKeys(USER_1.getCardMonth());
+    }
+
+    @FindBy(id = "creditCardYear")
+    private static WebElement cardYear;
+
+    public static void CardYear() {
+        cardYear.clear();
+        cardYear.sendKeys(USER_1.getCardYear());
+    }
+
+    @FindBy(id = "nameOnCard")
+    private static WebElement nameOnCard;
+
+    public static void CardHolder() {
+        nameOnCard.sendKeys(USER_1.getCardHolder());
+    }
 
     public PurchasePage(WebDriver driver) {
         PageFactory.initElements(driver, this);

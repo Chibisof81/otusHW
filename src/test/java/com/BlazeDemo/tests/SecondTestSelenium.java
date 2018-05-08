@@ -1,10 +1,8 @@
 package com.BlazeDemo.tests;
 
 import com.BlazeDemo.AbstractTest;
-import org.junit.runners.Suite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
@@ -74,6 +72,10 @@ public class SecondTestSelenium extends AbstractTest {
         PurchasePage.State();
         PurchasePage.ZipCode();
         PurchasePage.CardType(USER_1.getCardType());
+        PurchasePage.CardNumber();
+        PurchasePage.CardMonth();
+        PurchasePage.CardYear();
+        PurchasePage.CardHolder();
 
         //driver.findElement(By.id("inputName")).sendKeys(USER_1.getInputName());
         //driver.findElement(By.id("address")).sendKeys(USER_1.getAddress());
@@ -81,14 +83,14 @@ public class SecondTestSelenium extends AbstractTest {
         //driver.findElement(By.id("state")).sendKeys(USER_1.getState());
         //driver.findElement(By.id("zipCode")).sendKeys(USER_1.getZipCode());
         //new Select(driver.findElement(By.id("cardType"))).selectByValue(USER_1.getCardType());
-        driver.findElement(By.id("creditCardNumber")).sendKeys(USER_1.getCardNumber());
-        WebElement creditCardMonth = driver.findElement(By.id("creditCardMonth"));
-        creditCardMonth.clear();
-        creditCardMonth.sendKeys(USER_1.getCardMonth());
-        WebElement creditCardYear = driver.findElement(By.id("creditCardYear"));
-        creditCardYear.clear();
-        creditCardYear.sendKeys(USER_1.getCardYear());
-        driver.findElement(By.id("nameOnCard")).sendKeys(USER_1.getCardHolder());
+        //driver.findElement(By.id("creditCardNumber")).sendKeys(USER_1.getCardNumber());
+        //WebElement creditCardMonth = driver.findElement(By.id("creditCardMonth"));
+        //creditCardMonth.clear();
+        //creditCardMonth.sendKeys(USER_1.getCardMonth());
+        //WebElement creditCardYear = driver.findElement(By.id("creditCardYear"));
+        //creditCardYear.clear();
+        //creditCardYear.sendKeys(USER_1.getCardYear());
+        //driver.findElement(By.id("nameOnCard")).sendKeys(USER_1.getCardHolder());
 
         driver.findElement(By.id("rememberMe")).click();
         driver.findElement(By.cssSelector(".btn-primary")).click();
