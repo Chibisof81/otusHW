@@ -1,12 +1,14 @@
 package com.BlazeDemo.tests;
 
 import com.BlazeDemo.AbstractTest;
+import org.junit.runners.Suite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
+import page.PurchasePage;
 
 import static domain.UserData.USER_1;
 
@@ -65,7 +67,9 @@ public class SecondTestSelenium extends AbstractTest {
 
         Assert.assertEquals(a, costInt);
 
-        driver.findElement(By.id("inputName")).sendKeys(USER_1.getInputName());
+        PurchasePage pp = new PurchasePage(driver);
+        PurchasePage.FirstName();
+        //driver.findElement(By.id("inputName")).sendKeys(USER_1.getInputName());
         driver.findElement(By.id("address")).sendKeys(USER_1.getAddress());
         driver.findElement(By.id("city")).sendKeys(USER_1.getCity());
         driver.findElement(By.id("state")).sendKeys(USER_1.getState());
