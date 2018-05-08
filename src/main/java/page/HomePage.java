@@ -20,7 +20,7 @@ public class HomePage{
     private static WebElement to;
 
     @FindBy(css = "input")
-    private WebElement input;
+    private static WebElement input;
 
     public static void select_list1(String fromPort){
         Select statusDropdown=new Select(from);
@@ -32,9 +32,9 @@ public class HomePage{
         statusDropdown.selectByValue(toPort);
     }
 
-//    public void buttonClick(){
-//        input.click();
-//    }
+    public static void buttonClick(){
+        input.click();
+    }
 
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);

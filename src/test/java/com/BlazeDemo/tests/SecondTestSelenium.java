@@ -7,7 +7,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
-import static domain.UserData.*;
+
+import static domain.UserData.USER_1;
 
 public class SecondTestSelenium extends AbstractTest {
 
@@ -20,13 +21,11 @@ public class SecondTestSelenium extends AbstractTest {
 
         HomePage.select_list1(USER_1.getFrom());
         HomePage.select_list2(USER_1.getTo());
+        HomePage.buttonClick();
 
-       // new Select(HomePage.from).selectByValue(USER_1.getFrom());
+        // new Select(HomePage.from).selectByValue(USER_1.getFrom());
         //new Select(HomePage.to).selectByValue(USER_1.getTo());
-
-        //homePage.buttonClick();
-
-        driver.findElement(By.cssSelector("input")).click();
+        //driver.findElement(By.cssSelector("input")).click();
 
         WebElement header = driver.findElement(By.cssSelector("h3"));
         String headerStr = header.getText();
