@@ -69,12 +69,18 @@ public class SecondTestSelenium extends AbstractTest {
 
         PurchasePage pp = new PurchasePage(driver);
         PurchasePage.FirstName();
+        PurchasePage.Adress();
+        PurchasePage.Sity();
+        PurchasePage.State();
+        PurchasePage.ZipCode();
+        PurchasePage.CardType(USER_1.getCardType());
+
         //driver.findElement(By.id("inputName")).sendKeys(USER_1.getInputName());
-        driver.findElement(By.id("address")).sendKeys(USER_1.getAddress());
-        driver.findElement(By.id("city")).sendKeys(USER_1.getCity());
-        driver.findElement(By.id("state")).sendKeys(USER_1.getState());
-        driver.findElement(By.id("zipCode")).sendKeys(USER_1.getZipCode());
-        new Select(driver.findElement(By.id("cardType"))).selectByValue(USER_1.getCardType());
+        //driver.findElement(By.id("address")).sendKeys(USER_1.getAddress());
+        //driver.findElement(By.id("city")).sendKeys(USER_1.getCity());
+        //driver.findElement(By.id("state")).sendKeys(USER_1.getState());
+        //driver.findElement(By.id("zipCode")).sendKeys(USER_1.getZipCode());
+        //new Select(driver.findElement(By.id("cardType"))).selectByValue(USER_1.getCardType());
         driver.findElement(By.id("creditCardNumber")).sendKeys(USER_1.getCardNumber());
         WebElement creditCardMonth = driver.findElement(By.id("creditCardMonth"));
         creditCardMonth.clear();
