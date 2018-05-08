@@ -84,10 +84,22 @@ public class PurchasePage {
         nameOnCard.sendKeys(USER_1.getCardHolder());
     }
 
+    @FindBy(id = "rememberMe")
+    private static WebElement galka;
+
+    public static void Galka() {
+        galka.click();
+    }
+
+    @FindBy(css = ".btn-primary")
+    private static WebElement knopka;
+
+    public static void KnopkaClick() {
+        knopka.click();
+    }
+
     public PurchasePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-
-
     }
 }

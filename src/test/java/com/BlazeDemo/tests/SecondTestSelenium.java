@@ -76,6 +76,8 @@ public class SecondTestSelenium extends AbstractTest {
         PurchasePage.CardMonth();
         PurchasePage.CardYear();
         PurchasePage.CardHolder();
+        PurchasePage.Galka();
+        PurchasePage.KnopkaClick();
 
         //driver.findElement(By.id("inputName")).sendKeys(USER_1.getInputName());
         //driver.findElement(By.id("address")).sendKeys(USER_1.getAddress());
@@ -91,11 +93,10 @@ public class SecondTestSelenium extends AbstractTest {
         //creditCardYear.clear();
         //creditCardYear.sendKeys(USER_1.getCardYear());
         //driver.findElement(By.id("nameOnCard")).sendKeys(USER_1.getCardHolder());
+        //driver.findElement(By.id("rememberMe")).click();
+        //driver.findElement(By.cssSelector(".btn-primary")).click();
 
-        driver.findElement(By.id("rememberMe")).click();
-        driver.findElement(By.cssSelector(".btn-primary")).click();
         String confirmation = driver.getCurrentUrl();
-
         Assert.assertEquals(confirmation, "http://blazedemo.com/confirmation.php");
     }
 }
