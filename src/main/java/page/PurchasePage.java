@@ -11,6 +11,41 @@ import static domain.UserData.USER_1;
 public class PurchasePage {
     private WebDriver driver;
 
+    @FindBy(xpath = "/html//p[.='Flight Number: 9696']")
+    private static WebElement flightNumber;
+
+    public static String FlightNumber() {
+        return flightNumber.getText().substring(15);
+    }
+
+    @FindBy(xpath = "/html//p[.='Airline: Aer Lingus']")
+    private static WebElement airlane2;
+
+    public static String AirlineText() {
+        return airlane2.getText().substring(9);
+    }
+
+    @FindBy(xpath = "/html//p[.='Price: 200.98']")
+    private static WebElement price2;
+
+    public static String Price2() {
+        return price2.getText().substring(7);
+    }
+
+    @FindBy(xpath = "/html//p[.='Arbitrary Fees and Taxes: 514.76']")
+    private static WebElement taxes;
+
+    public static String StrTaxes() {
+        return taxes.getText().substring(26);
+    }
+
+    @FindBy(xpath = "/html/body//em[.='715.74 ']")
+    private static WebElement totalCost;
+
+    public static String TotalCost() {
+        return totalCost.getText().substring(0, 6);
+    }
+
     @FindBy(id = "inputName")
     private static WebElement inputName;
 

@@ -1,12 +1,11 @@
 package com.BlazeDemo.tests;
 
 import com.BlazeDemo.AbstractTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
 import page.PurchasePage;
+import page.ReservePage;
 
 import static domain.UserData.USER_1;
 
@@ -16,8 +15,9 @@ public class SecondTestSelenium extends AbstractTest {
 
     @Test
     public void testHomePage() {
-        HomePage hp = new HomePage(driver);
         driver.get("http://blazedemo.com");
+
+        HomePage hp = new HomePage(driver);
 
         HomePage.select_list1(USER_1.getFrom());
         HomePage.select_list2(USER_1.getTo());
@@ -27,45 +27,60 @@ public class SecondTestSelenium extends AbstractTest {
         //new Select(HomePage.to).selectByValue(USER_1.getTo());
         //driver.findElement(By.cssSelector("input")).click();
 
-        WebElement header = driver.findElement(By.cssSelector("h3"));
-        String headerStr = header.getText();
-        Assert.assertTrue(header.isDisplayed());
+        ReservePage rp = new ReservePage(driver);
+
+        String headerStr = ReservePage.Header();
+        String airline = ReservePage.Airline();
+        String flightNum = ReservePage.Flight();
+        String price = ReservePage.Price();
+
         Assert.assertEquals("Flights from Boston to Berlin:", headerStr);
+        ReservePage.ButtonRes();
 
-        WebElement flight = driver.findElement(By.xpath("/html/body//table[@class='table']//td[.='9696']"));
-        String flightStr = flight.getText();
-        WebElement airline = driver.findElement(By.xpath("/html/body//table[@class='table']//td[.='Aer Lingus']"));
-        String airlineStr = airline.getText();
-        WebElement price = driver.findElement(By.xpath("/html/body//table[@class='table']//td[.='$200.98']"));
-        String priceStr = price.getText().substring(1);
+        //WebElement header = driver.findElement(By.cssSelector("h3"));
+        //String headerStr = header.getText();
+        //Assert.assertTrue(header.isDisplayed());
+        //Assert.assertEquals("Flights from Boston to Berlin:", headerStr);
 
-        driver.findElement(By.xpath("/html/body//table[@class='table']/tbody/tr[3]/td[1]/input[@value='Choose This Flight']")).click();
+        //WebElement flight = driver.findElement(By.xpath("/html/body//table[@class='table']//td[.='9696']"));
+        //String flightStr = flight.getText();
+        //WebElement airline = driver.findElement(By.xpath("/html/body//table[@class='table']//td[.='Aer Lingus']"));
+        //String airlineStr = airline.getText();
+        //WebElement price = driver.findElement(By.xpath("/html/body//table[@class='table']//td[.='$200.98']"));
+        //String priceStr = price.getText().substring(1);
 
-        WebElement flightNumber = driver.findElement(By.xpath("/html//p[.='Flight Number: 9696']"));
-        String flightString = flightNumber.getText().substring(15);
-        WebElement airline2 = driver.findElement(By.xpath("/html//p[.='Airline: Aer Lingus']"));
-        String airlineString = airline2.getText().substring(9);
-        WebElement price2 = driver.findElement(By.xpath("/html//p[.='Price: 200.98']"));
-        String priceString = price2.getText().substring(7);
+        //driver.findElement(By.xpath("/html/body//table[@class='table']/tbody/tr[3]/td[1]/input[@value='Choose This Flight']")).click();
 
-        Assert.assertEquals(airlineStr, airlineString);
-        Assert.assertEquals(flightStr, flightString);
-        Assert.assertEquals(priceStr, priceString);
+        PurchasePage pp = new PurchasePage(driver);
 
-        WebElement taxes = driver.findElement(By.xpath("/html//p[.='Arbitrary Fees and Taxes: 514.76']"));
-        String taxesStr = taxes.getText().substring(26);
+//        WebElement flightNumber = driver.findElement(By.xpath("/html//p[.='Flight Number: 9696']"));
+//        String flightString = flightNumber.getText().substring(15);
+//        WebElement airline2 = driver.findElement(By.xpath("/html//p[.='Airline: Aer Lingus']"));
+//        String airlineString = airline2.getText().substring(9);
+//        WebElement price2 = driver.findElement(By.xpath("/html//p[.='Price: 200.98']"));
+//        String priceString = price2.getText().substring(7);
 
-        WebElement totalcost = driver.findElement(By.xpath("/html/body//em[.='715.74 ']"));
-        String costStr = totalcost.getText().substring(0, 6);
+        Assert.assertEquals(PurchasePage.AirlineText(), airline);
+        Assert.assertEquals(PurchasePage.FlightNumber(), flightNum);
+        Assert.assertEquals(PurchasePage.Price2(), price);
+
+
+        //WebElement taxes = driver.findElement(By.xpath("/html//p[.='Arbitrary Fees and Taxes: 514.76']"));
+        String taxesStr = PurchasePage.StrTaxes();
+
+        //WebElement totalcost = driver.findElement(By.xpath("/html/body//em[.='715.74 ']"));
+        String costStr = PurchasePage.TotalCost();
+
+        String priceStr = PurchasePage.Price2();
 
         float costInt = Float.parseFloat(costStr);
         float taxesInt = Float.parseFloat(taxesStr);
-        float priceInt = Float.parseFloat(priceString);
+        float priceInt = Float.parseFloat(priceStr);
         float a = Math.abs(taxesInt + priceInt);
 
         Assert.assertEquals(a, costInt);
 
-        PurchasePage pp = new PurchasePage(driver);
+
         PurchasePage.FirstName();
         PurchasePage.Adress();
         PurchasePage.Sity();
@@ -78,6 +93,7 @@ public class SecondTestSelenium extends AbstractTest {
         PurchasePage.CardHolder();
         PurchasePage.Galka();
         PurchasePage.KnopkaClick();
+
 
         //driver.findElement(By.id("inputName")).sendKeys(USER_1.getInputName());
         //driver.findElement(By.id("address")).sendKeys(USER_1.getAddress());
