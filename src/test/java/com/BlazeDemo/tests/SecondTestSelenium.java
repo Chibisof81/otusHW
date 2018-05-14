@@ -1,6 +1,8 @@
 package com.BlazeDemo.tests;
 
 import com.BlazeDemo.AbstractTest;
+import domain.User;
+import domain.UserBuilder;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
@@ -94,6 +96,7 @@ public class SecondTestSelenium extends AbstractTest {
         PurchasePage.Galka();
         PurchasePage.KnopkaClick();
 
+        final User user = new UserBuilder().inputName("Петя").address().cardHolder();
 
         //driver.findElement(By.id("inputName")).sendKeys(USER_1.getInputName());
         //driver.findElement(By.id("address")).sendKeys(USER_1.getAddress());
