@@ -13,17 +13,26 @@ public class User {
     private final String cardYear;
     private final String cardHolder;
 
-    User(UserBuilder userBuilder){
-        this.inputName = userBuilder.getInputName();
-        this.address = userBuilder.getAddress();
-        this.city = userBuilder.getCity();
-        this.state = userBuilder.getState();
-        this.zipCode = userBuilder.getZipCode();
-        this.cardType = userBuilder.getCardType();
-        this.cardNumber = userBuilder.getCardNumber();
-        this.cardMonth = userBuilder.getCardMonth();
-        this.cardYear = userBuilder.getCardYear();
-        this.cardHolder = userBuilder.getCardHolder() ;
+    User( String inputName,
+          String address,
+          String city,
+          String state,
+          String zipCode,
+          String cardType,
+          String cardNumber,
+          String cardMonth,
+          String cardYear,
+          String cardHolder){
+        this.inputName = inputName;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.cardType = cardType;
+        this.cardNumber = cardNumber;
+        this.cardMonth = cardMonth;
+        this.cardYear = cardYear;
+        this.cardHolder = cardHolder;
     }
 
 }

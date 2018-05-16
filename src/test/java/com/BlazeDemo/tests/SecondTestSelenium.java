@@ -1,8 +1,6 @@
 package com.BlazeDemo.tests;
 
 import com.BlazeDemo.AbstractTest;
-import domain.User;
-import domain.UserBuilder;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
@@ -17,9 +15,9 @@ public class SecondTestSelenium extends AbstractTest {
 
     @Test
     public void testHomePage() {
-        driver.get("http://blazedemo.com");
+        AbstractTest.getInstance().get("http://blazedemo.com");
 
-        HomePage hp = new HomePage(driver);
+        HomePage hp = new HomePage(AbstractTest.getInstance());
 
         HomePage.select_list1(USER_1.getFrom());
         HomePage.select_list2(USER_1.getTo());
@@ -29,7 +27,7 @@ public class SecondTestSelenium extends AbstractTest {
         //new Select(HomePage.to).selectByValue(USER_1.getTo());
         //driver.findElement(By.cssSelector("input")).click();
 
-        ReservePage rp = new ReservePage(driver);
+        ReservePage rp = new ReservePage(AbstractTest.getInstance());
 
         String headerStr = ReservePage.Header();
         String airline = ReservePage.Airline();
@@ -53,7 +51,7 @@ public class SecondTestSelenium extends AbstractTest {
 
         //driver.findElement(By.xpath("/html/body//table[@class='table']/tbody/tr[3]/td[1]/input[@value='Choose This Flight']")).click();
 
-        PurchasePage pp = new PurchasePage(driver);
+        PurchasePage pp = new PurchasePage(AbstractTest.getInstance());
 
 //        WebElement flightNumber = driver.findElement(By.xpath("/html//p[.='Flight Number: 9696']"));
 //        String flightString = flightNumber.getText().substring(15);
@@ -96,8 +94,6 @@ public class SecondTestSelenium extends AbstractTest {
         PurchasePage.Galka();
         PurchasePage.KnopkaClick();
 
-        final User user = new UserBuilder().inputName("Петя").address().cardHolder();
-
         //driver.findElement(By.id("inputName")).sendKeys(USER_1.getInputName());
         //driver.findElement(By.id("address")).sendKeys(USER_1.getAddress());
         //driver.findElement(By.id("city")).sendKeys(USER_1.getCity());
@@ -115,7 +111,7 @@ public class SecondTestSelenium extends AbstractTest {
         //driver.findElement(By.id("rememberMe")).click();
         //driver.findElement(By.cssSelector(".btn-primary")).click();
 
-        String confirmation = driver.getCurrentUrl();
+        String confirmation = AbstractTest.getInstance().getCurrentUrl();
         Assert.assertEquals(confirmation, "http://blazedemo.com/confirmation.php");
     }
 }

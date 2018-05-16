@@ -1,5 +1,7 @@
 package page;
 
+import domain.UserCreate;
+import domain.UserData;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

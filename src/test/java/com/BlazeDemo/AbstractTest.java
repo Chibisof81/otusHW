@@ -11,8 +11,17 @@ import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
 public class AbstractTest {
-    protected WebDriver driver;
+    private static WebDriver driver;
+    public static WebDriver getInstance(){
+        if (driver == null){
+            driver = new ChromeDriver();
+        }
+        return driver;
+    }
+
     private WebDriverWait WebDriverWait;
+
+
 
     @BeforeClass
     public static void setupClass() {
