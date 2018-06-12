@@ -11,12 +11,12 @@ public class FirstTestSelenium extends AbstractTest {
 
     @Test
     public void test() {
-        driver.get("http://blazedemo.com");
-        WebElement FindFlights = driver.findElement(By.cssSelector("input"));
+        AbstractTest.getInstance().get("http://blazedemo.com");
+        WebElement FindFlights = AbstractTest.getInstance().findElement(By.cssSelector("input"));
         FindFlights.click();
-        WebElement VirginAmerica = driver.findElement(By.cssSelector("tbody tr:nth-of-type(1) td:nth-child(4)"));
+        WebElement VirginAmerica = AbstractTest.getInstance().findElement(By.cssSelector("tbody tr:nth-of-type(1) td:nth-child(4)"));
         assertTrue(VirginAmerica.isDisplayed());
-        String page = driver.getCurrentUrl();
+        String page = AbstractTest.getInstance().getCurrentUrl();
         assertEquals(page, "http://blazedemo.com/reserve.php");
     }
 
