@@ -96,7 +96,7 @@ public class SecondTestSelenium extends AbstractTest {
         PurchasePage.Galka();
         PurchasePage.KnopkaClick();
 
-        final UserBuilder user = new UserBuilder().inputName("Петя").address("moskva").cardHolder("Petya");
+        final User user = new UserBuilder().inputName("Петя").address("moskva").cardHolder("Petya");
 
         //driver.findElement(By.id("inputName")).sendKeys(USER_1.getInputName());
         //driver.findElement(By.id("address")).sendKeys(USER_1.getAddress());
