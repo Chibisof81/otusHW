@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-public class AbstractTest {
+public abstract class AbstractTest {
     public static WebDriver driver;
     public static WebDriver getInstance(){
         if (driver == null){
