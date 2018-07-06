@@ -9,7 +9,7 @@ import page.LoginPageObject;
 public class ThirdTest extends AbstractTest {
 
     @Test
-    public void loginPageTest() throws InterruptedException {
+    public void loginPageTest(){
         LoginPageObject loginPageObject = new LoginPageObject(driver);
 
         driver.get("http://blazedemo.com/login");
