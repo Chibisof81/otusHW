@@ -1,6 +1,5 @@
 package page;
 
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,9 +15,12 @@ public class LoginPageObject {
         return loginButton;
     }
 
-    public static WebElement colorLoginButton() {
-        loginButton.getCssValue("background-color");
-        return loginButton;
+    public static String sizeLoginButton() {
+        return loginButton.getSize().toString();
+    }
+
+    public static String colorLoginButton() {
+        return loginButton.getCssValue("background-color");
     }
 
 
